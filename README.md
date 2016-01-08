@@ -1,5 +1,41 @@
 # Angular Style Guide
 
+## Apsis complicance
+At Apsis we follow the excellent style guide by John Papa, with a few alterations. The list below is meant to document all deviations from John's original styleguide.
+
+As for JavaScript syntax, our [JS style guide](https://github.com/ApsisInternational/javascript) always takes precedence over syntax used in this guide.
+
+### DDO, scope and bindToController
+**[[Extends style Y076](#style-y076)]**
+
+  - Always use `bindToController` in your DDO to define the interface of your   component.
+
+  This makes it clear what interface the component makes available, and makes the syntax very familiar if you ever need to use inherited scope. Since Angular 1.4.0 it is possible to use `bindToController` in combination with non-isolated scope.
+
+  ```javascript
+  // With isolated scope
+  function someDirective() {
+      return {
+          scope: {},
+          bindToController: {
+              param1: '=',
+              param2: '&',
+          },
+      }
+  }
+
+  // With inherited scope
+  function someDirective() {
+      return {
+          scope: true,
+          bindToController: {
+              param1: '=',
+              param2: '&',
+          },
+      }
+  }
+  ```
+
 ## Angular Team Endorsed
 Special thanks to Igor Minar, lead on the Angular team, for reviewing, contributing feedback, and entrusting me to shepherd this guide.
 
